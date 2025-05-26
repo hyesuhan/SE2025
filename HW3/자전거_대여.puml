@@ -1,0 +1,14 @@
+@startuml
+actor User
+boundary BikeRentalUI
+control BikeRentalService
+entity Bike
+entity RentalRecordRepository
+
+User -> BikeRentalUI : requestBikeRental(bikeID)
+BikeRentalUI -> BikeRentalService : rentBike(bikeID, memberID)
+BikeRentalService -> Bike : getBikeById(bikeID)
+BikeRentalService -> RentalRecordRepository : saveRentalRecord(memberID, bikeID)
+@enduml
+
+

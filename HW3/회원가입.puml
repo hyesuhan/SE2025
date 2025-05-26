@@ -1,0 +1,13 @@
+@startuml
+actor Guest
+boundary JoinUI
+control JoinService
+entity User
+entity MemberRepository
+
+Guest -> JoinUI : requestJoin(ID, PW, PH)
+JoinUI -> JoinService : join(ID, PW, PH)
+JoinService -> User : newUser(ID, PW, PH)
+JoinService -> MemberRepository : save(user)
+@enduml
+

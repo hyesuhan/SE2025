@@ -1,0 +1,14 @@
+@startuml
+actor Guest
+boundary AuthUI
+control AuthService
+entity Member
+entity MemberRepository
+
+Guest -> AuthUI : requestLogin(ID, PW)
+AuthUI -> AuthService : login(ID, PW)
+AuthService -> MemberRepository : findById(ID)
+AuthService -> Member : verifyAuth(PW)
+' 로그인 성공 시, Member 객체를 AuthUI 또는 AuthService가 저장
+@enduml
+

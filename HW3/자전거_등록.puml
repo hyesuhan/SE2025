@@ -1,0 +1,10 @@
+@startuml
+actor Admin
+boundary BikeManageUI
+control BikeService
+entity Bike
+
+Admin -> BikeManageUI : requestBikeRegistration()
+BikeManageUI -> BikeService : registerBike(bikeID, bikeName)
+BikeService -> Bike : createBike(bikeID, bikeName)
+@enduml

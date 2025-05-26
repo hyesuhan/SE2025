@@ -1,0 +1,13 @@
+@startuml
+actor User
+boundary RentalInfoUI
+control RentalInfoService
+entity RentalRecordRepository
+entity BikeRepository
+
+User -> RentalInfoUI : requestRentalInfo()
+RentalInfoUI -> RentalInfoService : fetchRentalInfo(memberID)
+RentalInfoService -> RentalRecordRepository : getRentalRecord(memberID)
+RentalInfoService -> BikeRepository : getBikeById(bikeID)
+@enduml
+

@@ -1,0 +1,11 @@
+@startuml
+actor User
+boundary AuthUI
+control AuthService
+
+User -> AuthUI : requestLogout()
+AuthUI -> AuthService : logout()
+' AuthService 또는 AuthUI가 저장하고 있던 Member 객체를 삭제/무효화
+@enduml
+
+
