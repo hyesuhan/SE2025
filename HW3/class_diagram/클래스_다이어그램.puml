@@ -1,0 +1,51 @@
+@startuml
+
+' ------------ 엔티티 클래스 정의 ------------
+
+class Member {
+    - id : String
+    - pw : String
+    + verifyAuth(pw: String) : bool
+    + getId() : String
+}
+
+class User {
+    - ph : String
+    + createUser(id: String, pw: String, ph: String) : void
+}
+
+class Admin {
+    + createBike(bikeId: String, bikeName: String) : Bike
+}
+
+class MemberDB {
+    - members : Member[*]
+    + save(user: Member) : void
+    + findById(id: String) : Member
+}
+
+class Bike {
+    - bikeId : String
+    - bikeName : String
+    + getBikeById(bikeId: String) : Bike
+}
+
+class Rental {
+    - rentals : Vector<(memberId: String, bikeId: String)>
+    + saveRental(memberId: String, bikeId: String) : void
+    + getRental(memberId: String) : List<String>
+}
+
+' ------------ 상속 관계 ------------
+
+User --|> Member
+Admin --|> Member
+
+' ------------ Aggregation / Composition / Association ------------
+
+MemberDB o-- "0..*" Member : owns
+User o-- "0..*" Rental : records
+Rental --> "1" Bike : refers to
+Rental --> "1" Member : from
+Admin --> Bike : creates
+@enduml
