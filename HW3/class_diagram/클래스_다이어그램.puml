@@ -48,5 +48,4 @@ User o-- "0..*" Rental : records
 Rental --> "1" Bike : refers to
 Rental --> "1" Member : from
 Admin --> Bike : creates
-
 @enduml
